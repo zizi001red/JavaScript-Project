@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> </title>
+</head>
+<body>
+
+<table border = 1>
+
+<script type = "text/javascript">
+
+
+
+
+     
+
+               
+function calender (startmonth=1,endmonth=12,iyear="") {
+ 
+for(let month = startmonth; month <=endmonth; month++)
+{
+  document.write("<td> <table cellpadding=5>")
+     
+  
+
+     let mnth_name = ["","January","Febuary","March","April","May","June","July",'August','September','October','November','December'];
+          
+          if(iyear){
+
+         var year= new Date(iyear);
+          }else{
+
+         var year= new Date();
+          }
+
+
+
+            document.write("<p>"+mnth_name[month]+" "+year.getFullYear()+"<p>")  
+
+    let week = ["sun","mon","tue","wed","thu","fri","sat"]
+            
+            week.forEach(term=>{
+                 document.write(term+"-")
+                    } );
+
+      if (month == 1 || month == 3 || month == 5 || month == 7 || month== 8 || month == 10 || month== 12)
+           
+           {
+            total_days = 31
+           }
+           else if( month == 2)
+           { 
+             total_days = 29
+           }
+           else{
+            total_days = 30
+           }        
+            
+
+       
+    for (let days = 1; days <= 31; days++)
+    {
+            
+
+        if( days <= total_days)
+        {
+           const date = new Date()
+           let dins = date.getDate()
+
+           const m = new Date()
+           let mahina = date.getMonth()+1
+
+           if ( dins == days && mahina == month )
+           {
+            document.write("<td bgcolor = green>"+days+" </td>")
+           } 
+           else{
+      document.write("<td>"+days+"</td>")
+        }
+
+}
+         else
+         {
+          document.write("<td></td>")
+         }
+
+      if (days%7==0)
+      {
+        document.write("<tr></tr>")
+      }
+    }
+
+  document.write("</td> </table>")
+ 
+  if (month%6==0)
+  {
+     document.write("<tr></tr>")
+  }
+ }
+}
+
+
+calender();
+
+
+function calenderchange() {
+  const input = document.getElementById('input').value;
+
+calender(input,input);
+
+
+}
+
+function changeyear() {
+  const input = document.getElementById('get_year').value;
+
+calender(1,12,input);
+
+ 
+}
+
+
+
+
+
+</script>
+
+
+</table>
+<br>
+  <td> <input type = "number" id="input" value="" placeholder="Enter The Number"></td>
+  <button onclick="calenderchange()">Submit</button>
+
+<br>
+<br>
+<select id="get_year" onchange="changeyear()">
+ <option value ="2024">2024</option>
+  <option value="2025">2025</option>
+   <option value="2026">2026</option>
+    <option value="2027">2027</option>
+     <option value="2028">2028</option>
+</select>
+
+
+
+</body>
+</html>
+
